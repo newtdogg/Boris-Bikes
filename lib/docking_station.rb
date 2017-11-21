@@ -3,6 +3,6 @@ class DockingStation
   end
 end
 
-class release_bike
+class Bike
 
 end
