@@ -2,7 +2,7 @@ require_relative 'bike'
 class DockingStation
   DEFAULT_CAPACITY = 20
   def initialize bikes = []
-@bikes = bikes
+    @bikes = bikes
   end
   def release_bike
     raise "no bikes to release" if empty?
