@@ -3,7 +3,9 @@ describe DockingStation do
   it { is_expected.to respond_to :release_bike }
 
   it "releases working bikes" do
-    bike = DockingStation.new([Bike.new]).release_bike
+    station = DockingStation.new
+    station.dock(Bike.new)
+    bike = station.release_bike
     expect(bike).to be_working
   end
 
@@ -25,4 +27,8 @@ describe DockingStation do
     expect {station.dock(Bike.new)}.to raise_error("docking station full")
   end
 
+  it "accepts a capacity argument, if not capacity defaults to DEFAULT_CAPACITY" do
+    expect{DockingStation.new(30)}.not_to raise_error
+    expect{DockingStation.new}.not_to raise_error
+  end
 end

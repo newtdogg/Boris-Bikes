@@ -1,8 +1,9 @@
 require_relative 'bike'
 class DockingStation
   DEFAULT_CAPACITY = 20
-  def initialize bikes = []
-    @bikes = bikes
+  def initialize(capacity = DEFAULT_CAPACITY)
+    @capacity = capacity
+    @bikes = []
   end
   def release_bike
     raise "no bikes to release" if empty?
@@ -18,7 +19,7 @@ class DockingStation
 
   private
   def full?
-    @bikes.length >= DEFAULT_CAPACITY
+    @bikes.length >= @capacity
   end
   def empty?
     @bikes.empty?
