@@ -7,6 +7,7 @@ class DockingStation
   end
   def release_bike
     raise "no bikes to release" if empty?
+    raise "bike not working" unless @bikes.first.working?
     @bikes.first
   end
   def dock bike

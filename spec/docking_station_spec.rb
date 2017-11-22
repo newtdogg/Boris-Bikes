@@ -6,8 +6,20 @@ describe DockingStation do
     station = DockingStation.new
     station.dock(Bike.new)
     bike = station.release_bike
+    bike.working = true
     expect(bike).to be_working
+    bike.working = false
+    expect(bike).not_to be_working
+    station.dock bike
+    expect{station.release_bike}.to raise_error("bike not working")
   end
+
+  it "accepts broken bikes" do
+    bike = Bike.new
+    bike.working = false
+    expect {subject.dock(bike)}.not_to raise_error
+  end
+  
 
   it "docks bike" do
     is_expected.to respond_to :dock
